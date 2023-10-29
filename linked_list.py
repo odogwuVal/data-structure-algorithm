@@ -64,17 +64,29 @@ class LinkedList:
         print(f'{index} is out of range')
 
     def reverse(self):
+        # case of no element in the linked list
         if not self.head:
+            print(f'List is empty')
             return
+        # case of one element in the linked list
+        if not self.head.next:
+            return self.head
 
-        prev = None
-        current_node = self.head
-        while current_node:
-            tmp = current_node.next
-            current_node.next = prev
-            prev = current_node
-            current_node = tmp
-        self.head = prev
+        prev_node = None
+        current_head = self.head
+        while current_head:
+            # track the state of the link
+            tmp = current_head.next
+
+            # point the current head to None
+            current_head.next = prev_node
+
+            # update prev_node and current_head
+            prev_node = current_head
+            current_head = tmp
+
+        self.head = prev_node
+
 
 mylist = LinkedList() 
 mylist.append(5)
@@ -85,7 +97,7 @@ mylist.prepend(30)
 mylist.insert(2, 45)
 mylist.insert(0, 15)
 mylist.insert(7, 36)
-# mylist.insert(10, 37)
+mylist.insert(10, 37)
 mylist.reverse()
 # mylist.remove(3)
 mylist.print()
