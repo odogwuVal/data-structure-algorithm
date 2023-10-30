@@ -1,5 +1,4 @@
-# stack with array
-class ArrayStack:
+class Stack:
     def __init__(self):
         self.arr = []
         self.length = 0
@@ -24,10 +23,10 @@ class ArrayStack:
         self.length -= 1
         return popped_item
 
-mystack = ArrayStack()
-mystack.push(8)
-mystack.push(4)
-mystack.push(15)
-mystack.pop()
-mystack.peek()
-print(mystack)
+# mystack = ArrayStack()
+# mystack.push(8)
+# mystack.push(4)
+# mystack.push(15)
+# mystack.pop()
+# mystack.peek()
+# print(mystack)
