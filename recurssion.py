@@ -59,5 +59,24 @@ def fib_recurssive(n):
     return fib_recurssive(n-1) + fib_recurssive(n-2)
 
 
-print([fib_recurssive(i) for i in range(5)])
+# print([fib_recurssive(i) for i in range(5)])
 # print([fib_iterative(i) for i in range(5)])
+
+def reverseStr(string):
+    mystr = []
+    for i in range(len(string)-1, -1, -1):
+        mystr.append(string[i])
+    reversed_str = ''.join(mystr)
+    return reversed_str
+
+# print(reverseStr('hello'))
+
+def reverseStrRec(string):
+    size = len(string)
+    if size == 0:
+        return
+    last_char = string[size-1]
+    print(last_char, end='')
+    return reverseStrRec(string[0:size-1])
+
+reverseStrRec('hello')
