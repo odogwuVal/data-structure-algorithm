@@ -46,4 +46,38 @@ def insertionSort(arr):
         i += 1
     return arr
 
-insertionSort(unsorted_list)
+# insertionSort(unsorted_list)
+
+# Merge Sort
+def mergeSort(arr):
+    if len(arr) > 1:
+        right_arr = arr[len(arr)//2:]
+        left_arr = arr[:len(arr)//2]
+        mergeSort(left_arr)
+        mergeSort(right_arr)
+
+        # merge
+        i = 0 #left arr index
+        j = 0 #right arr index
+        k = 0 #merged arr index
+        while i < len(left_arr) and j < len(right_arr):
+            if left_arr[i] < right_arr[j]:
+                arr[k] = left_arr[i]
+                i += 1
+            else:
+                if right_arr[j] < left_arr[i]:
+                    arr[k] = right_arr[j]
+                    j += 1
+            k += 1
+        while i < len(left_arr):
+            arr[k] = left_arr[i]
+            i += 1
+            k += 1
+
+        while j < len(right_arr):
+            arr[k] = right_arr[j]
+            j += 1
+            k += 1
+        
+mergeSort(unsorted_list)
+print(unsorted_list)
