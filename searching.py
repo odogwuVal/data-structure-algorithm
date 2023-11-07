@@ -157,12 +157,21 @@ class BinarySearchTree:
     # Inorder = [1, 4, 6, 9, 15, 20, 170]
     # preorder = [9, 4, 1, 6, 20, 15, 170]
     # postorder = [1, 6, 4, 15, 170, 20, 9]
+
     def inOrder(self, current_node, mylist):
         if current_node:
             self.inOrder(current_node.left, mylist)
             mylist.append(current_node.data)
             self.inOrder(current_node.right, mylist)
         return mylist
+
+    # def inOrder(self, current_node, mylist):
+    #     if current_node.left:
+    #         self.inOrder(current_node.left, mylist)
+    #     mylist.append(current_node.data)
+    #     if current_node.right:
+    #         self.inOrder(current_node.right, mylist)
+    #     return mylist
 
     def preOrder(self, current_node, mylist):
         if current_node:
