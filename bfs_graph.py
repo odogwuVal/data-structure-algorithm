@@ -72,7 +72,10 @@ if __name__ == '__main__':
         parent[node] = None
         trav_time[node] = [-1, -1]
     
-
+    print(color)
+    print(parent)
+    print(trav_time)
+    
     time = 0
     def dfs_util(u):
         global time
