@@ -31,6 +31,7 @@ def selectionSort(arr):
 # print(selectionSort(unsorted_list))
 
 # Insertion sort
+# insertion sort should only be used when your input is small and the data is mostly sorted
 def insertionSort(arr):
     length = len(arr)
     i = 1
@@ -49,6 +50,9 @@ def insertionSort(arr):
 # insertionSort(unsorted_list)
 
 # Merge Sort
+# it is fast and O(nlogn)
+# if you are worried about worst case scenario, use merge sort
+#  works well when you are not bothered about space complexity
 def mergeSort(arr):
     if len(arr) > 1:
         right_arr = arr[len(arr)//2:]
