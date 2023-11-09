@@ -50,11 +50,12 @@ def maxSubArray(nums):
 
 def moveZeros(nums):
     count = 0
-    while count < len(nums):
-        if nums[count] == 0:
-            value = nums.pop(count)
-            nums.append(value)
-        count += 1
+    for i in range(len(nums)):
+        if nums[i] != 0 and nums[count] == 0:
+            nums[count], nums[i] = nums[i], nums[count]
+
+        if nums[count] != 0:
+            count += 1
     return nums
 
 nums = [0, 1, 0, 3, 12]
