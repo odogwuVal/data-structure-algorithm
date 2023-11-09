@@ -6,13 +6,21 @@ def twoSums(nums, target):
     while track < len(nums):
         for i in range(track+1, len(nums)-1):
             if nums[track] + nums[i] == target:
-                output.append(nums[track])
-                output.append(nums[i])
+                output.append(track)
+                output.append(i)
                 break
         track += 1
     return output
 
+def twoSumOptimized(nums, target):
+    mydict = {}
+    for i, n in enumerate(nums):
+        if n in mydict:
+            return [mydict[n], i]
+        else:
+            mydict[target - n] = i 
+
 nums = [2, 7, 11, 15]
 target = 9
 
-print(twoSums(nums, target))
+print(twoSumOptimized(nums, target))
