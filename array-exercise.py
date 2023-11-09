@@ -41,5 +41,21 @@ def maxSubArray(nums):
             currentSum = 0
 
     return maxSum
-nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
-print(maxSubArray(nums))
+# nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+# print(maxSubArray(nums))
+
+
+# Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements
+# NB: you must do this in-place without making a copy of the array
+
+def moveZeros(nums):
+    count = 0
+    while count < len(nums):
+        if nums[count] == 0:
+            value = nums.pop(count)
+            nums.append(value)
+        count += 1
+    return nums
+
+nums = [0, 1, 0, 3, 12]
+print(moveZeros(nums))
