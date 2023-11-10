@@ -54,9 +54,24 @@ def moveZeros(nums):
         if nums[i] != 0 and nums[count] == 0:
             nums[count], nums[i] = nums[i], nums[count]
 
-        if nums[count] != 0:
+        if nums [count] != 0:
             count += 1
     return nums
 
-nums = [0, 1, 0, 3, 12]
-print(moveZeros(nums))
+# nums = [0, 1, 0, 3, 12]
+# print(moveZeros(nums))
+
+# Given an integer array nums, return true if any value appears at least twice in the array and return false if every element
+# is distinct
+
+def containsDuplicate(nums):
+    mydict = {}
+    for i in range(len(nums)):
+        if nums[i] in mydict.values():
+            return True
+        else:
+            mydict[i] = nums[i]
+
+nums = [3,3]
+# nums = [0, 1, 0, 3, 12]
+print(containsDuplicate(nums))
