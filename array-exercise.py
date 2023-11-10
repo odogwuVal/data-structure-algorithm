@@ -72,6 +72,28 @@ def containsDuplicate(nums):
         else:
             mydict[i] = nums[i]
 
-nums = [3,3]
-# nums = [0, 1, 0, 3, 12]
-print(containsDuplicate(nums))
+# nums = [3,3]
+# print(containsDuplicate(nums))
+
+# Given an integer array nums, rotate the array to the right by k steps, where k is non-negative 
+
+# This approach returned a time limit exceeded
+def rotateList(nums, k):
+   while k:
+    value = nums.pop()
+    nums.insert(0, value)
+    k -= 1
+   return nums
+
+# better approach
+def rotate(nums, k):
+    if k < len(nums):
+        nums[:]=nums[-k:] + nums[:-k]
+    else:
+        for i in range(k):
+            nums[:] = nums[-1:] + nums[:-1]
+    return nums
+
+nums = [0, 1, 0, 3, 12]
+# nums = [1,2]
+print(rotate(nums, k=8))
