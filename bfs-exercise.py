@@ -1,16 +1,41 @@
+from queue import Queue
+
 class TreeNode:
     def __init__(self, data):
         self.data = data 
         self.right = None
         self.left = None
-    
-class BinaryTree():
-    def __init__(self):
-        self.root = None
+
+    def insert(self, data):
+        if data == self.data:
+            return
+
+        # insert in the left
+        if data < self.data:
+            if not self.left:
+                self.left = TreeNode(data)
+            else:
+                self.left.insert(data)
+        
+        # insert in the right
+        else:
+            if not self.right:
+                self.right = TreeNode(data)
+            else:
+                self.right.insert(data)
+
+    def inorder_traversal(self):
+        element = []
+        if self.left:
+            element += self.left.inorder_traversal()
+        element.append(self.data)
+        if self.right:
+            element += self.right.inorder_traversal()
+        return element
 
     def isSameTree(self, p, q):
         # p and q are Tree Nodes
-        
+
         # return false if either p or q is None
         if p is None or q is None:
             return False
@@ -23,3 +48,41 @@ class BinaryTree():
         if p.data == q.data:
             return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
         return False
+
+    def bfs(self):
+        if not self.data:
+            return
+        
+        queue = []
+        bfs_output = ''
+        queue.append(self)
+
+        while len(queue) != 0:
+            self = queue.pop(0)
+            bfs_output += str(self.data) + '==>'
+
+            if self.left:
+                queue.append(self.left)
+            if self.right:
+                queue.append(self.right)
+        return bfs_output
+
+            
+        
+
+
+
+
+mytree = TreeNode(7)
+mytree.insert(5)
+mytree.insert(9)
+mytree.insert(8)
+mytree.insert(4)
+mytree.insert(10)
+mytree.insert(6)
+print(mytree.inorder_traversal())
+print(mytree.bfs())
+
+        # 7
+    # 5           #9
+ #4      #6    #8     #10
