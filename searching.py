@@ -127,7 +127,7 @@ class BinarySearchTree:
         while len(my_queue) > 0:
             current_node = my_queue[0]
             del my_queue[0]
-            my_list.append(current_node.data)
+            my_list.append(current_node.data) 
             if current_node.left:
                 my_queue.append(current_node.left)
             if current_node.right:
