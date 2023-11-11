@@ -1,5 +1,3 @@
-from queue import Queue
-
 class TreeNode:
     def __init__(self, data):
         self.data = data 
@@ -67,9 +65,15 @@ class TreeNode:
                 queue.append(self.right)
         return bfs_output
 
-            
-        
-
+    def height(self):
+        if self.left and self.right:
+            return 1 + max(self.left.height(), self.right.height())
+        elif self.left:
+            return 1 + self.left.height()
+        elif self.right:
+            return 1 + self.right.height()
+        else:
+            return 1
 
 
 
@@ -80,9 +84,9 @@ mytree.insert(8)
 mytree.insert(4)
 mytree.insert(10)
 mytree.insert(6)
+print(mytree.height())
 print(mytree.inorder_traversal())
 print(mytree.bfs())
-
         # 7
     # 5           #9
  #4      #6    #8     #10
