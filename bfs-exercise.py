@@ -101,6 +101,42 @@ class Solution(object):
             else:
                 return bfs_helper(node.left, node.data, parent_min) and bfs_helper(node.right, parent_max, node.data)
         return bfs_helper(root, float('inf'), float('-inf'))
+    # you are given the root of a binary search tree(BST), where the values of exactly two nodes of the tree were swapped by mistake
+    # Recover the tree without changing its structure
+    def inorder(self, root, arr):
+        if not root:
+            return arr
+        self.inorder(root.left, arr)
+        arr.append(root.data)
+        self.inorder(root.right, arr)
+
+    def inorder_fix(self, root, v1, v2):
+        if not root:
+            return
+        if root.data == v1:
+            root.data = v2
+        if root.data == v2:
+            root.data = v1
+        self.inorder_fix(root.left, v1, v2)
+        self.inorder_fix(root.right, v1, v2)
+
+    def recoverTree(self, root):
+        arr = []
+        self.inorder(root, arr)
+        sorted_arr = sorted(arr)
+
+        v1 = None
+        v2 = None
+
+        for i in range(0, len(arr)):
+            if arr[i] != sorted_arr[i]:
+                if v1 == None:
+                    v1 = arr[i]
+                else:
+                    v2 = arr[i]
+        self.inorder_fix(root, v1, v2)
+
+    
 
 
 
@@ -120,6 +156,7 @@ print(mytree.bfs())
 
 mysolution = Solution()
 print(mysolution.isValidBSTEfficient(mytree))
+mysolution.recoverTree(mytree)
         # 7
     # 5           #9
  #4      #6    #8     #10
