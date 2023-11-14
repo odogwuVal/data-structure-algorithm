@@ -89,23 +89,18 @@ class TreeNode:
                     self.right.isValidBST()
         return True 
 
-    def isValidBSTEfficient(self, parent_max, parent_min):
-        # if not self:
-        #     return True
-        
-        # elif self.data >= parent_max or self.data <= parent_min:
-        #     return False
-        
-        # else:
-        #     if self.left:
-        #         return self.left.isValidBSTEfficient(self.data, parent_min)
-        #     else:
-        #         return
-        #     if self.right:
-        #         return self.right.isValidBSTEfficient(parent_max, self.data)
-        #     else:
-        #         return       
-        pass
+class Solution(object):
+    def isValidBSTEfficient(self, root):
+        def bfs_helper(node, parent_max, parent_min):
+            if not node:
+                return True
+
+            elif node.data >= parent_max and node.data <= parent_min:
+                return False
+
+            else:
+                return bfs_helper(node.left, node.data, parent_min) and bfs_helper(node.right, parent_max, node.data)
+        return bfs_helper(root, float('inf'), float('-inf'))
 
 
 
@@ -121,7 +116,10 @@ print(mytree.height())
 print(mytree.inorder_traversal())
 print(mytree.bfs())
 # print(mytree.isValidBST())
-print(mytree.isValidBSTEfficient(float('inf'), float('-inf')))
+# print(mytree.isValidBSTEfficient(float('inf'), float('-inf')))
+
+mysolution = Solution()
+print(mysolution.isValidBSTEfficient(mytree))
         # 7
     # 5           #9
  #4      #6    #8     #10
