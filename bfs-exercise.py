@@ -75,18 +75,38 @@ class TreeNode:
         else:
             return 1
 
+    def isValidBST(self):
+        if self:
+            if self.left:
+                if self.left.data > self.data:
+                    return False
+                else:
+                    self.left.isValidBST()
+            if self.right:
+                if self.right.data < self.data:
+                    return False
+                else:
+                    self.right.isValidBST()
+        return True 
+
+    def isValidBSTEfficient(self, parent_max, parent_min):
+        pass      
+
+
 
 
 mytree = TreeNode(7)
 mytree.insert(5)
 mytree.insert(9)
-mytree.insert(8)
 mytree.insert(4)
-mytree.insert(10)
 mytree.insert(6)
+mytree.insert(8)
+mytree.insert(10)
 print(mytree.height())
 print(mytree.inorder_traversal())
 print(mytree.bfs())
+# print(mytree.isValidBST())
+print(mytree.isValidBSTEfficient(float('inf'), float('-inf')))
         # 7
     # 5           #9
  #4      #6    #8     #10
