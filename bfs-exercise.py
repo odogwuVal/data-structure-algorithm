@@ -90,7 +90,22 @@ class TreeNode:
         return True 
 
     def isValidBSTEfficient(self, parent_max, parent_min):
-        pass      
+        # if not self:
+        #     return True
+        
+        # elif self.data >= parent_max or self.data <= parent_min:
+        #     return False
+        
+        # else:
+        #     if self.left:
+        #         return self.left.isValidBSTEfficient(self.data, parent_min)
+        #     else:
+        #         return
+        #     if self.right:
+        #         return self.right.isValidBSTEfficient(parent_max, self.data)
+        #     else:
+        #         return       
+        pass
 
 
 
