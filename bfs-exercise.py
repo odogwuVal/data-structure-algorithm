@@ -142,7 +142,7 @@ class Solution(object):
         if not left or not right:
             return False
         if left.data == right.data:
-            return self.isMirror(left.left, right.left) and self.isMirror(left.right, right.right)
+            return self.isMirror(left.left, right.right) and self.isMirror(left.right, right.left)
         return False
 
     def isSymmetric(self, root):
