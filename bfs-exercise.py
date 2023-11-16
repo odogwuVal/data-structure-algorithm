@@ -87,7 +87,7 @@ class TreeNode:
                     return False
                 else:
                     self.right.isValidBST()
-        return True 
+        return True
 
 class Solution(object):
     def isValidBSTEfficient(self, root):
@@ -136,6 +136,20 @@ class Solution(object):
                     v2 = arr[i]
         self.inorder_fix(root, v1, v2)
 
+    def isMirror(self, left, right):
+        if not left and not right:
+            return True
+        if not left or not right:
+            return False
+        if left.data == right.data:
+            return self.isMirror(left.left, right.left) and self.isMirror(left.right, right.right)
+        return False
+
+    def isSymmetric(self, root):
+        if not root:
+            return True
+        return self.isMirror(root.left, root.right)
+
     
 
 
@@ -157,6 +171,7 @@ print(mytree.bfs())
 mysolution = Solution()
 print(mysolution.isValidBSTEfficient(mytree))
 mysolution.recoverTree(mytree)
+print(mysolution.isSymmetric(mytree))
         # 7
     # 5           #9
  #4      #6    #8     #10
